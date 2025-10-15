@@ -69,3 +69,78 @@ hoverables.forEach(el => {
     cursor.classList.remove('hover');
   });
 });
+
+// Canvas dot grid animation
+const canvas = document.getElementById('dot-grid');
+const ctx = canvas.getContext('2d');
+let mouseX = 0;
+let mouseY = 0;
+const gridSpacing = 30;
+const dotRadius = 1.5;
+const maxDistance = 100; // Distance within which dots react to mouse
+const maxDisplacement = 10; // Maximum distance a dot can move
+
+// Set canvas size
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Track mouse position
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Dot class to store original and current positions
+class Dot {
+  constructor(x, y) {
+    this.baseX = x;
+    this.baseY = y;
+    this.x = x;
+    this.y = y;
+  }
+
+  update() {
+    const dx = mouseX - this.baseX;
+    const dy = mouseY - this.baseY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < maxDistance) {
+      const force = (1 - distance / maxDistance) * maxDisplacement;
+      const angle = Math.atan2(dy, dx);
+      this.x = this.baseX - Math.cos(angle) * force;
+      this.y = this.baseY - Math.sin(angle) * force;
+    } else {
+      this.x = this.baseX;
+      this.y = this.baseY;
+    }
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, dotRadius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+    ctx.fill();
+  }
+}
+
+// Create grid of dots
+const dots = [];
+for (let x = 0; x < window.innerWidth; x += gridSpacing) {
+  for (let y = 0; y < window.innerHeight; y += gridSpacing) {
+    dots.push(new Dot(x, y));
+  }
+}
+
+// Animation loop
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dots.forEach(dot => {
+    dot.update();
+    dot.draw();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
