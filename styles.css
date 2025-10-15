@@ -250,3 +250,10 @@ body {
   transform: translate(-50%, -50%) scale(0.8); 
   background-color: rgba(0, 0, 0, 0.6); 
 }
+
+/* Hide custom cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
