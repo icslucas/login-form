@@ -36,7 +36,8 @@ body {
 }
 
 .wrapper {
-  width: 420px;
+  width: 620px;
+  height: fit-content;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, .2);
   backdrop-filter: blur(20px);
@@ -44,7 +45,7 @@ body {
   color: #fff;
   border-radius: 50px;
   padding: 30px 40px;
-  z-index: 1; /* Ensure form is above canvas */
+  z-index: 1; 
 }
 
 .wrapper h1 {
@@ -200,7 +201,7 @@ body {
   left: 50%;
   width: 0;
   height: 0;
-  background: radial-gradient(circle, #acfab0 30%, transparent 70%);
+  background: radial-gradient(circle, #8aa9fd 30%, transparent 70%);
   transform: translate(-50%, -50%);
   border-radius: 50%;
   opacity: 0.75;
@@ -225,7 +226,7 @@ body {
 }
 
 .btn.animate {
-  box-shadow: 0 0 25px 5px rgba(199, 255, 166, 0.5);
+  box-shadow: 0 0 25px 5px rgba(166, 194, 255, 0.5);
 }
 
 .particle {
