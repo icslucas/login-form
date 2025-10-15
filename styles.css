@@ -20,6 +20,12 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 768px), (hover: none) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
 #dot-grid {
   position: absolute;
   top: 0;
@@ -251,9 +257,3 @@ body {
   background-color: rgba(0, 0, 0, 0.6); 
 }
 
-/* Hide custom cursor on mobile/touch devices */
-@media (hover: none) and (pointer: coarse) {
-  .custom-cursor {
-    display: none;
-  }
-}
