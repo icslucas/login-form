@@ -1,16 +1,20 @@
 const button = document.querySelector('.btn');
 button.addEventListener('click', () => {
   button.classList.remove('animate');
-  void button.offsetWidth; // restart animation
+  void button.offsetWidth; // Restart animation
   button.classList.add('animate');
 });
 
 const checkbox = document.querySelector('.remember-forgot input[type="checkbox"]');
 const container = document.querySelector('.remember-forgot');
+let particleThrottle = null;
 
-checkbox.addEventListener('change', (e) => {
-  if (checkbox.checked) {
+checkbox.addEventListener('change', () => {
+  if (checkbox.checked && !particleThrottle) {
     createParticles();
+    particleThrottle = setTimeout(() => {
+      particleThrottle = null;
+    }, 600); // Throttle to match particle duration
   }
 });
 
@@ -38,3 +42,30 @@ function createParticles() {
     setTimeout(() => particle.remove(), 600);
   }
 }
+
+document.addEventListener('mousemove', (e) => {
+  const cursor = document.querySelector('.custom-cursor');
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
+
+document.addEventListener('mousedown', () => {
+  const cursor = document.querySelector('.custom-cursor');
+  cursor.classList.add('active');
+});
+
+document.addEventListener('mouseup', () => {
+  const cursor = document.querySelector('.custom-cursor');
+  cursor.classList.remove('active');
+});
+
+const hoverables = document.querySelectorAll('a, button, input, [role="button"]');
+const cursor = document.querySelector('.custom-cursor');
+hoverables.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.classList.add('hover');
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+  });
+});
