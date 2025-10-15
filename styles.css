@@ -1,111 +1,228 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Google Sans Code", monospace;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url("bg.jpg")no-repeat;
-    background-size: cover;
-    background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .wrapper {
-    width: 420px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
-    box-shadow: rgba(0, 0, 0, .2);
-    color: #fff;
-    border-radius: 10px;
-    padding: 30px 40px;
-
-
+  width: 420px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: rgba(0, 0, 0, .2);
+  color: #fff;
+  border-radius: 50px;
+  padding: 30px 40px;
 }
 
-.wrapper h1{
-    font-size: 36px;
-    text-align: center;
-
-    
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .wrapper .input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
 }
 
-.input-box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border:2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
-    
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
 }
 
-.input-box input::placeholder{
-    color:#fff
-
+.input-box input::placeholder {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #fff;
 }
 
-.input-box i{
-    position: absolute;
-    right: 20px;
-    top:50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
 }
 
-.wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
 
-
-
+.wrapper .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+  position: relative;
 }
 
-.remember-forgot label input{
-    color: #fff;
-    margin-right: 3px;
-} 
 
-.remember-forgot a{
-    color: #fff;
-    text-decoration: none;
+.remember-forgot label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  user-select: none;
+}
 
-} 
-.remember-forgot a:hover{
-   text-decoration: underline;
-} 
+
+.remember-forgot input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+
+.remember-forgot input[type="checkbox"]:hover {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+
+.remember-forgot input[type="checkbox"]:checked {
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+  animation: checkboxGlow 1.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes checkboxGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  }
+}
+
+.remember-forgot input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;
+  opacity: 0;
+  transform: scale(0) rotate(45deg);
+  transition: opacity 0.2s ease, transform 0.25s ease 0.05s;
+}
+
+.remember-forgot input[type="checkbox"]:checked::after {
+  opacity: 1;
+  transform: scale(1) rotate(45deg);
+}
+
+
+.remember-forgot a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+  color: #ace8fa;
+}
 
 .wrapper .btn {
-   width: 100%;
-   height: 45px;
-   background: #fff;
-   border: none;
-   outline: none;
-   border-radius: 40px;
-   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-   cursor: pointer;
-   font-size: 16px;
-   color: #333;
-   font-weight: 600;
-} 
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+
+  position: relative;
+  overflow: hidden;
+  transition: background 0.375s, color 0.375s, transform 0.2s;
+}
+
+
+.wrapper .btn:active {
+  transform: scale(0.97);
+}
+
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #acfab0 30%, transparent 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0.75;
+  transition: none;
+}
+
+
+.btn.animate::after {
+  animation: rippleExpand 0.6s ease-out forwards;
+}
+
+@keyframes rippleExpand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.75;
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+
+
+.btn.animate {
+  box-shadow: 0 0 25px 5px rgba(199, 255, 166, 0.5);
+}
+
+.particle {
+  position: absolute;
+  pointer-events: none;
+}
