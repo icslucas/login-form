@@ -76,7 +76,7 @@ let mouseX = 0;
 let mouseY = 0;
 const gridSpacing = 30;
 const dotRadius = 1.5;
-const maxDistance = 100; // Distance within which dots react to mouse
+const maxDistance = 100; // Distance within which dots react to mouse please dont exagerate please its laggy
 const maxDisplacement = 10; // Maximum distance a dot can move
 
 function resizeCanvas() {
