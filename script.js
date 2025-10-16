@@ -1,7 +1,7 @@
 const button = document.querySelector('.btn');
 button.addEventListener('click', () => {
   button.classList.remove('animate');
-  void button.offsetWidth; // Restart animation
+  void button.offsetWidth; 
   button.classList.add('animate');
 });
 
@@ -14,7 +14,7 @@ checkbox.addEventListener('change', () => {
     createParticles();
     particleThrottle = setTimeout(() => {
       particleThrottle = null;
-    }, 600); // Throttle to match particle duration
+    }, 600); 
   }
 });
 
@@ -70,7 +70,6 @@ hoverables.forEach(el => {
   });
 });
 
-// Canvas dot grid animation
 const canvas = document.getElementById('dot-grid');
 const ctx = canvas.getContext('2d');
 let mouseX = 0;
@@ -80,7 +79,6 @@ const dotRadius = 1.5;
 const maxDistance = 100; // Distance within which dots react to mouse
 const maxDisplacement = 10; // Maximum distance a dot can move
 
-// Set canvas size
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -88,13 +86,11 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// Track mouse position
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
-// Dot class to store original and current positions
 class Dot {
   constructor(x, y) {
     this.baseX = x;
@@ -134,7 +130,7 @@ for (let x = 0; x < window.innerWidth; x += gridSpacing) {
   }
 }
 
-// Animation loop
+// Animation loop (kind of laggy now)
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dots.forEach(dot => {
