@@ -122,7 +122,7 @@ class Dot {
   }
 }
 
-// Create grid of dots
+// ccreate grid of dots
 const dots = [];
 for (let x = 0; x < window.innerWidth; x += gridSpacing) {
   for (let y = 0; y < window.innerHeight; y += gridSpacing) {
